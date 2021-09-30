@@ -8,11 +8,13 @@ import {
   Keyboard,
   Alert,
 } from 'react-native';
+
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
+import MainButton from '../components/MainButton';
 import Colors from '../constants/colors';
 
 const StartGameScreen = props => {
@@ -51,13 +53,10 @@ const StartGameScreen = props => {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
         <BodyText>You selected</BodyText>
-        <NumberContainer>
-          {selectedNumber}
-        </NumberContainer>
-        <Button
-          title="START GAME"
-          onPress={() => props.onStartGame (selectedNumber)}
-        />
+        <NumberContainer>{selectedNumber}</NumberContainer>
+        <MainButton onPress={() => props.onStartGame (selectedNumber)}>
+          START GAME
+        </MainButton>
       </Card>
     );
   }
@@ -86,15 +85,15 @@ const StartGameScreen = props => {
             <View style={styles.button}>
               <Button
                 title="Reset"
-                color={Colors.accent}
                 onPress={resetInputHandler}
+                color={Colors.accent}
               />
             </View>
             <View style={styles.button}>
               <Button
                 title="Confirm"
-                color={Colors.primary}
                 onPress={confirmInputHandler}
+                color={Colors.primary}
               />
             </View>
           </View>
@@ -110,11 +109,11 @@ const styles = StyleSheet.create ({
     flex: 1,
     padding: 10,
     alignItems: 'center',
-    fontFamily: 'open-sans-bold',
   },
   title: {
     fontSize: 20,
     marginVertical: 10,
+    fontFamily: 'open-sans-bold',
   },
   inputContainer: {
     width: 300,
